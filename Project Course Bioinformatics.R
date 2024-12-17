@@ -1,4 +1,3 @@
-# Set Working Directory
 
 setwd("/Users/lizethofelt/Desktop/Bioinformatics R /Project Course")
 getwd()
@@ -10,8 +9,8 @@ BiocManager::install(c("gplots", "clusterProfiler", "org.Hs.eg.db", "pathview", 
 
 # Load libraries
 library(edgeR)
-library(tidyverse)
-library(ggplot2)
+library(tidyverse) 
+library(ggplot2) 
 library(pheatmap)
 library(clusterProfiler)
 library(org.Hs.eg.db)
@@ -33,7 +32,7 @@ library(pheatmap)     # For heatmap visualization
 
 
 # Load files exported from Galaxy (normalized counts and gene annotations)
-merge_table <- read.table("edgeR_Treated-Mock.tabular", 
+merge_table <- read.table("annotation_edgeR_Treated-Mock.tabular", 
                           header = TRUE, sep = "\t")  # Gene annotations
 
 norm_counts <- read.table("edgeR_normcounts.tabular", 
@@ -627,7 +626,7 @@ dotplot(go_enrich, showCategory = 10, title = "Top 10 GO Enrichment")
 
 str(significant_genes)
 
-#############################################################################################
+#################################################################
 
 # Perform KEGG enrichment analysis
 kegg_enrich <- enrichKEGG(gene = entrez_ids,
@@ -648,3 +647,4 @@ write.csv(as.data.frame(kegg_enrich), file = "KEGG_Enrichment_Results.csv")
 
 # Plot KEGG enrichment results
 dotplot(kegg_enrich, showCategory = 20, title = "Top 10 KEGG Enriched Pathways")
+
